@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyj.Mapper.Shopping_CartMapper">
+
+    <insert id="insert" parameterType="shopping_Cart">
+        insert into shopping_carts
+        values (null,#{userId},#{commodityId},#{quantity});
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from shopping_carts
+        where userId=#{userId};
+    </delete>
+
+    <delete id="deleteByCommodityId" parameterType="shopping_Cart">
+        delete from shopping_carts
+        where userId=#{userId} and commodityId=#{commodityId};
+    </delete>
+
+    <select id="findAll" resultType="shopping_Cart_find" parameterType="int">
+        select shoppingCartId,
+               c.userId,username,
+               s_c.commodityId,commodityName,
+               s_c.quantity,
+               mobile,
+               email,
+               address,
+               price,
+               originAddress
+        from shopping_carts s_c,users u,commodities c
+        where s_c.userId=#{userId} and c.userId=u.userId and s_c.commodityId=c.commodityId;
+    </select>
+
+    <update id="updateQuantityByCommodityId" parameterType="shopping_Cart">
+        update shopping_carts
+        set quantity=#{quantity}
+        where userId=#{userId} and commodityId=#{commodityId};
+    </update>
+</mapper>

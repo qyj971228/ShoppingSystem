@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyj.Mapper.Order_BusinessMapper">
+
+    <select id="findAll" resultType="order_Business_Simp">
+        select order_businessId,userId,businessName,commodityName,commodityType,quantity,price,totalPrice
+        from orders_business;
+    </select>
+
+    <select id="findSimplByUserId" resultType="order_Business_Simp" parameterType="int">
+        select order_businessId,userId,businessName,commodityName,commodityType,quantity,price,totalPrice
+        from orders_business
+        where userId=#{userId};
+    </select>
+
+    <select id="findByUserIdOrderBusinessId" resultType="order_Business" parameterType="order_Business_Simp">
+        select *
+        from orders_business
+        where userId=#{userId} and order_businessId=#{order_businessId};
+    </select>
+
+    <insert id="insert" parameterType="order_insert">
+        insert into orders_business
+        values (
+            null,#{userId_Business},#{customName},#{commodityName},#{commodityType},#{quantity},#{price},#{totalPrice},
+            #{businessAddress},#{customAddress},#{customMobile},#{businessMobile},#{datetime}
+        );
+    </insert>
+
+    <delete id="deleteByOrderBusinessId" parameterType="order_Business_Simp">
+        delete from orders_business
+        where order_businessId=#{order_businessId}
+    </delete>
+
+    <update id="updateAddressMobileByOrderBusinessId" parameterType="order_update">
+        update orders_business
+        set customAddress=#{customAddress},customMobile=#{customMobile}
+        where order_businessId=#{order_businessId}
+    </update>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyj.Mapper.User_RoleMapper">
+
+    <select id="findByUserId" resultType="string" parameterType="int">
+        select role from roles r,users_roles ur
+        where ur.roleId=r.roleId and userId=#{userId};
+    </select>
+
+    <delete id="deleteByUserIdRoleId" parameterType="user_Role">
+        delete from users_roles
+        where userId=#{userId} and roleId=#{roleId};
+    </delete>
+
+    <insert id="insertByUserIdRoleId" parameterType="user_Role">
+        insert into users_roles
+        values (null,#{userId},#{roleId});
+    </insert>
+
+    <update id="updateByUserIdRoleId" parameterType="user_Role_Update">
+        update users_roles
+        set roleId=#{newRoleId}
+        where userId=#{userId} and roleId=#{roleId};
+    </update>
+
+</mapper>

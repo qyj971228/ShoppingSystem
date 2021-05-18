@@ -1,0 +1,27 @@
+server:
+  port: 8000
+
+#spring数据源配置
+spring:
+  #导入子配置文件
+  profiles:
+    active: satoken
+  #数据源配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shopping_management_system?serverTimezone=Asia/Shanghai
+    username: root
+    password: DBJdedi2gehao
+
+#mybatis
+mybatis:
+  #批量别名定义
+  type-aliases-package: com.qyj.Entity
+
+#设置日志级别
+logging:
+  level:
+    com:
+      example:
+        mapper=debug: debug

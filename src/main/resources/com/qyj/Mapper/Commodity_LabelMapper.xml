@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyj.Mapper.Commodity_LabelMapper">
+
+    <select id="findAllByCommodityId" parameterType="int" resultType="string">
+        select label from commodities_labels c_l,labels l
+        where c_l.labelId=l.labelId and commodityId=#{commodityId};
+    </select>
+
+    <select id="findAllByLabelId" parameterType="int" resultType="string">
+        select commodityName from commodities_labels c_l,commodities c
+        where c_l.commodityId=c.commodityId and labelId=#{labelId};
+    </select>
+
+    <delete id="deleteByCommodityIdLabelId" parameterType="commodity_Label">
+        delete from commodities_labels
+        where commodityId=#{commodityId} and labelId=#{labelId};
+    </delete>
+
+    <delete id="deleteAllByCommodityId" parameterType="int">
+        delete from commodities_labels
+        where commodityId=#{commodityId};
+    </delete>
+
+    <update id="updateByCommodityIdLabelId" parameterType="commodity_Label">
+        update commodities_labels
+        set commodityId=#{commodityId},labelId=#{labelId}
+        where c_lId=#{c_lId};
+    </update>
+
+    <insert id="insertByCommodityIdLabelId" parameterType="commodity_Label">
+        insert into commodities_labels
+        values (null,#{commodityId},#{labelId});
+    </insert>
+
+</mapper>

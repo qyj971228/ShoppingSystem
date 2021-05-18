@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qyj.Mapper.Order_CustomMapper">
+
+    <select id="findAll" resultType="order_Custom_Simp">
+        select order_customId,userId,businessName,commodityName,commodityType,quantity,price,totalPrice
+        from orders_custom;
+    </select>
+
+    <select id="findSimplByUserId" resultType="order_Custom_Simp" parameterType="int">
+        select order_customId,userId,businessName,commodityName,commodityType,quantity,price,totalPrice
+        from orders_custom
+        where userId=#{userId};
+    </select>
+
+    <select id="findByUserIdOrderCustomId" resultType="order_Custom" parameterType="order_Custom_Simp">
+        select *
+        from orders_custom
+        where userId=#{userId} and order_customId=#{order_customId};
+    </select>
+
+    <insert id="insert" parameterType="order_insert">
+        insert into orders_custom
+        values (
+            null,#{userId_Custom},#{businessName},#{commodityName},#{commodityType},#{quantity},#{price},#{totalPrice},
+            #{businessAddress},#{customAddress},#{customMobile},#{businessMobile},#{datetime}
+        );
+    </insert>
+
+    <delete id="deleteByOrderCustomId" parameterType="order_Custom_Simp">
+        delete from orders_custom
+        where order_customId=#{order_customId};
+    </delete>
+
+    <update id="updateAddressMobileByOrderCustomId" parameterType="order_update">
+        update orders_custom
+        set customAddress=#{customAddress},customMobile=#{customMobile}
+        where order_customId=#{order_customId};
+    </update>
+
+    <select id="findOrderBusinessIdByCommodityName" parameterType="string" resultType="int">
+        select order_businessId
+        from orders_custom o_c,orders_business o_b
+        where o_c.commodityName=o_b.commodityName and o_c.commodityName=#{commodityName};
+    </select>
+
+    <select id="findOrderCustomIdByCommodityName" parameterType="string" resultType="int">
+        select order_customId
+        from orders_custom
+        where commodityName=#{commodityName};
+    </select>
+
+</mapper>
