@@ -11,5 +11,6 @@ public class Commodity {
     private int price;
     private int inventory;
     private String originAddress;
+    private int count;
 
 }

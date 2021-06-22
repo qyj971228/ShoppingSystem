@@ -12,6 +12,11 @@
         where userId=#{userId};
     </delete>
 
+    <delete id="deleteById" parameterType="int">
+        delete from shopping_carts
+        where shoppingCartId=#{shoppingCartId}
+    </delete>
+
     <delete id="deleteByCommodityId" parameterType="shopping_Cart">
         delete from shopping_carts
         where userId=#{userId} and commodityId=#{commodityId};
@@ -21,6 +26,7 @@
         select shoppingCartId,
                c.userId,username,
                s_c.commodityId,commodityName,
+               c.inventory,
                s_c.quantity,
                mobile,
                email,

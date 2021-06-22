@@ -2,9 +2,11 @@ package com.qyj.Service.impl;
 
 import com.qyj.Entity.Commodity.Commodity;
 import com.qyj.Entity.Order.*;
+import com.qyj.Entity.Shopping_Cart.Shopping_Cart;
 import com.qyj.Mapper.CommodityMapper;
 import com.qyj.Mapper.Order_BusinessMapper;
 import com.qyj.Mapper.Order_CustomMapper;
+import com.qyj.Mapper.Shopping_CartMapper;
 import com.qyj.Service.Order_Interface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,9 @@ public class Order_Impl implements Order_Interface {
 
     @Autowired
     CommodityMapper commodityMapper;
+
+    @Autowired
+    Shopping_CartMapper shopping_cartMapper;
 
     @Override
     public List<Order_Business_Simp> findAll_Business() {
@@ -46,18 +51,18 @@ public class Order_Impl implements Order_Interface {
     }
 
     @Override
-    public Order_Business findByUserIdOrderBusinessId(Order_Business_Simp order_business_simp) {
-        return order_businessMapper.findByUserIdOrderBusinessId(order_business_simp);
+    public Order_Business findByUserIdOrderBusinessId(int order_businessId) {
+        return order_businessMapper.findByUserIdOrderBusinessId(order_businessId);
     }
 
     @Override
-    public Order_Custom findByUserIdOrderCustomId(Order_Custom_Simp order_custom_simp) {
-        return order_customMapper.findByUserIdOrderCustomId(order_custom_simp);
+    public Order_Custom findByUserIdOrderCustomId(int order_customId) {
+        return order_customMapper.findByUserIdOrderCustomId(order_customId);
     }
 
     @Override
     @Transactional
-    public void insert(Order_insert order_insert) {
+    public String insert(Order_insert order_insert) {
 
         int commodityId = 0;
         int inventory = 0;
@@ -68,13 +73,21 @@ public class Order_Impl implements Order_Interface {
         inventory = com.getInventory();
 
         int newInventory = inventory - order_insert.getQuantity();
+        if(newInventory >= 0){
+            commodity.setInventory(newInventory);
+        }else{
+            return "库存不足";
+        }
         commodity.setCommodityId(commodityId);
-        commodity.setInventory(newInventory);
+
 
         commodityMapper.updateInventoryById(commodity);
 
         order_customMapper.insert(order_insert);
         order_businessMapper.insert(order_insert);
+
+        shopping_cartMapper.deleteById(order_insert.getShoppingCartId());
+        return "购买成功";
     }
 
     @Override

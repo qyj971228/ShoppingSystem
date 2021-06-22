@@ -27,8 +27,8 @@ public class Business_Order {
     }
 
     @RequestMapping("/findByUserIdOrderBusinessId")
-    public Order_Business findByUserIdOrderBusinessId(Order_Business_Simp order_business_simp){
-        return order_impl.findByUserIdOrderBusinessId(order_business_simp);
+    public Order_Business findByUserIdOrderBusinessId(int order_businessId){
+        return order_impl.findByUserIdOrderBusinessId(order_businessId);
     }
 
     @RequestMapping("/deleteByOrderBusinessId")

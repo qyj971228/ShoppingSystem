@@ -34,23 +34,23 @@ public interface Order_Interface {
 
     /**
      * 根据商家ID,订单ID,查找当前商家目标订单详细信息
-     * @param order_business_simp 商家ID:userId,商家订单ID:order_businessId
+     * @param  order_businessId 商家订单ID
      * @return 详细信息：Order_Business
      */
-    Order_Business findByUserIdOrderBusinessId(Order_Business_Simp order_business_simp);
+    Order_Business findByUserIdOrderBusinessId(int order_businessId);
 
     /**
      * 根据顾客ID,订单ID,查找当前顾客目标订单详细信息
-     * @param order_custom_simp 顾客ID:userId,顾客订单ID:order_customId
+     * @param order_customId 顾客订单ID
      * @return 详细信息：Order_Custom
      */
-    Order_Custom findByUserIdOrderCustomId(Order_Custom_Simp order_custom_simp);
+    Order_Custom findByUserIdOrderCustomId(int order_customId);
 
     /**
      * 根据商家订单ID,顾客订单ID,将数据插入,并在商品售出后,根据商品名称获取指定商品库存,更新为售出后商品的库存余额
      * @param order_insert
      */
-    void insert(Order_insert order_insert);
+    String insert(Order_insert order_insert);
 
     /**
      * 根据商家订单ID,删除订单

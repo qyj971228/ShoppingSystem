@@ -13,6 +13,8 @@ public class Shopping_Cart_find {
     private int commodityId;
     private String commodityName;
 
+    private int inventory;
+
     private int quantity;
 
     private String mobile;

@@ -24,10 +24,10 @@ public interface Order_CustomMapper {
 
     /**
      * 根据顾客ID,订单ID,查找当前顾客目标订单详细信息
-     * @param order_custom_simp 顾客ID:userId,顾客订单ID:order_customId
+     * @param order_customId 顾客订单ID
      * @return 详细信息：Order_Custom
      */
-    Order_Custom findByUserIdOrderCustomId(Order_Custom_Simp order_custom_simp);
+    Order_Custom findByUserIdOrderCustomId(int order_customId);
 
     /**
      * 插入订单信息

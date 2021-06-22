@@ -25,8 +25,8 @@ public class Custom_Order {
     }
 
     @RequestMapping("/findByUserIdOrderCustomId")
-    public Order_Custom findByUserIdOrderCustomId(Order_Custom_Simp order_custom_simp){
-        return order_impl.findByUserIdOrderCustomId(order_custom_simp);
+    public Order_Custom findByUserIdOrderCustomId(int order_customId){
+        return order_impl.findByUserIdOrderCustomId(order_customId);
     }
 
     @RequestMapping("/deleteByOrderCustomId")
@@ -35,8 +35,8 @@ public class Custom_Order {
     }
 
     @RequestMapping("/insert")
-    public void insert(Order_insert order_insert) {
-        order_impl.insert(order_insert);
+    public String insert(Order_insert order_insert) {
+        return order_impl.insert(order_insert);
     }
 
     @RequestMapping("/update")

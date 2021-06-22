@@ -3,27 +3,37 @@
 <mapper namespace="com.qyj.Mapper.Order_BusinessMapper">
 
     <select id="findAll" resultType="order_Business_Simp">
-        select order_businessId,userId,businessName,commodityName,commodityType,quantity,price,totalPrice
+        select order_businessId,userId,businessName,commodityName,quantity,price,totalPrice
         from orders_business;
     </select>
 
     <select id="findSimplByUserId" resultType="order_Business_Simp" parameterType="int">
-        select order_businessId,userId,businessName,commodityName,commodityType,quantity,price,totalPrice
+        select order_businessId,userId,businessName,commodityName,quantity,price,totalPrice
         from orders_business
         where userId=#{userId};
     </select>
 
-    <select id="findByUserIdOrderBusinessId" resultType="order_Business" parameterType="order_Business_Simp">
+    <select id="findByUserIdOrderBusinessId" resultType="order_Business" parameterType="int">
         select *
         from orders_business
-        where userId=#{userId} and order_businessId=#{order_businessId};
+        where order_businessId=#{order_businessId};
     </select>
 
     <insert id="insert" parameterType="order_insert">
         insert into orders_business
         values (
-            null,#{userId_Business},#{customName},#{commodityName},#{commodityType},#{quantity},#{price},#{totalPrice},
-            #{businessAddress},#{customAddress},#{customMobile},#{businessMobile},#{datetime}
+            null,
+            #{userId_Business},
+            #{customName},
+            #{commodityName},
+            #{quantity},
+            #{price},
+            #{totalPrice},
+            #{businessAddress},
+            #{customAddress},
+            #{customMobile},
+            #{businessMobile},
+            #{datetime}
         );
     </insert>
 

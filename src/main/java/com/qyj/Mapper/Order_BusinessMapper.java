@@ -28,10 +28,10 @@ public interface Order_BusinessMapper {
 
     /**
      * 根据商家ID,订单ID,查找当前商家目标订单详细信息
-     * @param order_business_simp 商家ID:userId,商家订单ID:order_businessId
+     * @param order_businessId 商家订单ID
      * @return 详细信息：Order_Business
      */
-    Order_Business findByUserIdOrderBusinessId(Order_Business_Simp order_business_simp);
+    Order_Business findByUserIdOrderBusinessId(int order_businessId);
 
     /**
      * 插入订单信息
