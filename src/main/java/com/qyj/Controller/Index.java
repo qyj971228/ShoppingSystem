@@ -96,7 +96,7 @@ public class Index {
      * 注销
      * @return 注销操作信息
      */
-    @RequestMapping("/allRoles/logout")
+    @RequestMapping("/logout")
     public String logout(){
 
         try{

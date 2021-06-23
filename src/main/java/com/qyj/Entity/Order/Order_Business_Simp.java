@@ -7,7 +7,7 @@ public class Order_Business_Simp {
 
     private int order_businessId;
     private int userId;
-    private String businessName;
+    private String customName;
     private String commodityName;
     private String commodityType;
     private int quantity;

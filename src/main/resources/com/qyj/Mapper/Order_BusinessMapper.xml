@@ -8,7 +8,7 @@
     </select>
 
     <select id="findSimplByUserId" resultType="order_Business_Simp" parameterType="int">
-        select order_businessId,userId,businessName,commodityName,quantity,price,totalPrice
+        select order_businessId,userId,customName,commodityName,quantity,price,totalPrice
         from orders_business
         where userId=#{userId};
     </select>

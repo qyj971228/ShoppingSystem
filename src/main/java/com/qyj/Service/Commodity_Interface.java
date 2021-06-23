@@ -3,6 +3,7 @@ package com.qyj.Service;
 import com.qyj.Entity.Commodity.Commodity;
 import com.qyj.Entity.Commodity.Complex_Select;
 import com.qyj.Entity.Commodity.PriceRange;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

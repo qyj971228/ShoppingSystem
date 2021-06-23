@@ -17,5 +17,9 @@ public class AllRoles_User {
     public User findById(int userId){
         return user_impl.findById(userId);
     }
+    @RequestMapping("/update")
+    public void update(User user){
+        user_impl.update(user);
+    }
 
 }
