@@ -17,9 +17,9 @@
         where shoppingCartId=#{shoppingCartId}
     </delete>
 
-    <delete id="deleteByCommodityId" parameterType="shopping_Cart">
+    <delete id="deleteByShoppingCartId" parameterType="int">
         delete from shopping_carts
-        where userId=#{userId} and commodityId=#{commodityId};
+        where shoppingCartId=#{shoppingCartId};
     </delete>
 
     <select id="findAll" resultType="shopping_Cart_find" parameterType="int">

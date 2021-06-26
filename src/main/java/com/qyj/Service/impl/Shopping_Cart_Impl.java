@@ -26,8 +26,8 @@ public class Shopping_Cart_Impl implements Shopping_Cart_Interface {
     }
 
     @Override
-    public void deleteByCommodityId(Shopping_Cart shopping_cart) {
-        shopping_cartMapper.deleteByCommodityId(shopping_cart);
+    public void deleteByShoppingCartId(int shoppingCartId) {
+        shopping_cartMapper.deleteByShoppingCartId(shoppingCartId);
     }
 
     @Override

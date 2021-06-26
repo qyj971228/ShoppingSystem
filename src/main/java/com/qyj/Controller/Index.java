@@ -68,13 +68,17 @@ public class Index {
 
             User newUser = user_impl.findByUsername(user.getUsername());
 
-            User_Role newUser_Role = new User_Role();
-            newUser_Role.setUserId(newUser.getUserId());
-            newUser_Role.setRoleId(role_impl.findRoleIdByRole(role));
+            if(role == "root"){
+                return "非法权限操作";
+            }else {
+                User_Role newUser_Role = new User_Role();
+                newUser_Role.setUserId(newUser.getUserId());
+                newUser_Role.setRoleId(role_impl.findRoleIdByRole(role));
 
-            user_role_impl.insertByUserIdRoleId(newUser_Role);
+                user_role_impl.insertByUserIdRoleId(newUser_Role);
 
-            return "注册成功";
+                return "注册成功";
+            }
 
         }catch(DataAccessException e){
 

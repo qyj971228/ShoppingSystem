@@ -2,6 +2,7 @@ package com.qyj.Mapper;
 
 import com.qyj.Entity.Role.User_Role;
 import com.qyj.Entity.Role.User_Role_Update;
+import com.qyj.Entity.UserAndRole;
 
 import java.util.List;
 
@@ -9,6 +10,12 @@ import java.util.List;
  * 表users_roles相关
  */
 public interface User_RoleMapper {
+
+    /**
+     * 查找所有用户的信息与对应角色
+     * @return
+     */
+    List<UserAndRole> findAll();
 
     /**
      * 根据用户ID,查找其角色

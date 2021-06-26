@@ -36,7 +36,7 @@
 
     <insert id="insert" parameterType="commodity">
         insert into commodities
-        values(null,#{userId},#{commodityName},#{price},#{inventory},#{originAddress});
+        values(null,#{userId},#{commodityName},#{price},#{inventory},#{originAddress},1);
     </insert>
 
     <delete id="deleteById" parameterType="int">

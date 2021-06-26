@@ -31,9 +31,9 @@ public class Custom_Shopping_Cart {
         shopping_cart_impl.delete(userId);
     }
 
-    @RequestMapping("/deleteByCommodityId")
-    public void deleteByCommodityId(Shopping_Cart shopping_cart){
-        shopping_cart_impl.deleteByCommodityId(shopping_cart);
+    @RequestMapping("/deleteByShoppingCartId")
+    public void deleteByCommodityId(int shoppingCartId){
+        shopping_cart_impl.deleteByShoppingCartId(shoppingCartId);
     }
 
     @RequestMapping("/findAll")

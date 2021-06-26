@@ -2,10 +2,17 @@ package com.qyj.Service;
 
 import com.qyj.Entity.Role.User_Role;
 import com.qyj.Entity.Role.User_Role_Update;
+import com.qyj.Entity.UserAndRole;
 
 import java.util.List;
 
 public interface User_Role_Interface {
+
+    /**
+     * 查找所有用户的信息与对应角色
+     * @return
+     */
+    List<UserAndRole> findAll();
 
     /**
      * 根据用户ID,查找其角色

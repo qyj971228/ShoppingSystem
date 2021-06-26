@@ -30,9 +30,9 @@ public interface Shopping_CartMapper {
 
     /**
      * 根据顾客ID,商品ID,删除指定顾客购物车内的指定商品
-     * @param shopping_cart 顾客ID:userId,商品ID:commodityId
+     * @param shoppingCartId
      */
-    void deleteByCommodityId(Shopping_Cart shopping_cart);
+    void deleteByShoppingCartId(int shoppingCartId);
 
     /**
      * 根据顾客ID,查找其购物车内商品和商家的详细信息

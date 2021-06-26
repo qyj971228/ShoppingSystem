@@ -2,6 +2,7 @@ package com.qyj.Controller.Root;
 
 import com.qyj.Entity.Role.User_Role;
 import com.qyj.Entity.Role.User_Role_Update;
+import com.qyj.Entity.UserAndRole;
 import com.qyj.Service.impl.User_Role_Impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,6 +21,11 @@ public class Root_User_Role {
 
     @Autowired
     User_Role_Impl user_role_impl;
+
+    @RequestMapping("/findAll")
+    public List<UserAndRole> findAll(){
+        return user_role_impl.findAll();
+    }
 
     @RequestMapping("/findByUserId")
     public List<String> findByUserId(int userId){
